@@ -1,6 +1,14 @@
 [package]
-name = "diceware-rs"
+name = "simple-diceware"
 version = "0.1.0"
+description = "Create diceware passwords from the command line"
+readme = "README.md"
+repository = "https://github.com/bchopson/simple-diceware-rs"
+homepage = "https://github.com/bchopson/simple-diceware-rs"
+license = "MIT"
+authors = ["Ben Chopson <bchopson@users.noreply.github.com>"]
+keywords = ["cli", "password", "diceware"]
+categories = ["command-line-utilities"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
