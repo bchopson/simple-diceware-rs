@@ -1,5 +1,11 @@
+use clap::Parser;
 use rand::Rng;
-use std::env;
+
+#[derive(Parser)]
+struct Cli {
+    #[arg(default_value_t = 6)]
+    length: u8,
+}
 
 fn get_list() -> std::collections::HashMap<String, String> {
     let wordlist = include_str!("../assets/eff_large_wordlist.txt");
@@ -20,7 +26,7 @@ fn get_phrase(diceware_list: &std::collections::HashMap<String, String>) -> Stri
     diceware_list.get(&key).unwrap().to_owned()
 }
 
-fn generate_password(length: usize) -> String {
+fn generate_password(length: u8) -> String {
     if length < 1 {
         panic!("Password must be at least one phrase");
     }
@@ -32,11 +38,6 @@ fn generate_password(length: usize) -> String {
 }
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let length = if args.len() > 1 {
-        args[1].parse().expect("Invalid length argument")
-    } else {
-        6
-    };
-    println!("{}", generate_password(length));
+    let args = Cli::parse();
+    println!("{}", generate_password(args.length));
 }
